@@ -64,5 +64,3 @@ We also make videos on [Youtube](https://www.youtube.com/@billullonex).
 <div align="center">
   <sub>Building the future of accessible AI, one project at a time.</sub>
 </div>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B6rKUf9DWRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
