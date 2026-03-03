@@ -15,7 +15,7 @@
 
 ## 🛠️ Journey
 
-### 🐉 Year 1 
+### 🐉 2023-2024
 In 2023, we built websites & CRM, believing that would help businesses become more successful.
 
 We made revenue & migrated IT infrastructure for many companies in Europe.
@@ -26,8 +26,6 @@ We made revenue & migrated IT infrastructure for many companies in Europe.
 
 We learned how to work as a team.
 
-
-### 🐍 Year 2
 We realized AI solves a lot of problems we seek to fix for businesses.
 
 <div align="center">
