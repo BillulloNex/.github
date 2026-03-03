@@ -51,7 +51,7 @@ So we're working on the [AI Box](https://lab.billullonex.com/).
 
 > Featured on [Educador](https://educadorsummit.com/) next to Former Madam President & IBM
 
-If you wanna chat local AI, hit me up at [thomas@billullonex.com](mailto:thomas@billullonex.com)
+If you wanna chat local AI, hit me up at [thomas@beenex.ai](mailto:thomas@beenex.ai)
 
 ### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"/> Youtube
 
