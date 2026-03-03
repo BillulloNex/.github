@@ -4,9 +4,9 @@
 
 # Building AI for Productive People and Businesses 🐝
 
-[![Email](https://img.shields.io/badge/Email-thomas%40billullonex.com-greenn)](mailto:thomas@billullonex.com)
+[![Email](https://img.shields.io/badge/Email-thomas%40beenex.ai-greenn)](mailto:thomas@beenex.ai)
 
-[![BillulloNex](https://img.shields.io/badge/Youtube-BillulloNex-yellow)](https://www.youtube.com/@thomasthemaker)
+[![BillulloNex](https://img.shields.io/badge/Youtube-BeeNex-yellow)](https://www.youtube.com/@billullonex)
 
 > Building AI products with substance
 
