@@ -16,7 +16,7 @@
 ## 🛠️ Journey
 
 ### 🐉 Year 1 
-In 2024, we built websites & CRM, believing that would help businesses become more successful.
+In 2023, we built websites & CRM, believing that would help businesses become more successful.
 
 We made revenue & migrated IT infrastructure for many companies in Europe.
 
