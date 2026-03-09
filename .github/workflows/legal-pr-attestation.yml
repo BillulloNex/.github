@@ -1,0 +1,84 @@
+name: Legal PR Attestation
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      PR_BODY: ${{ github.event.pull_request.body }}
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+    steps:
+      - name: Checkout policy repo
+        uses: actions/checkout@v4
+        with:
+          repository: BillulloNex/.github
+          sparse-checkout: bypass-users.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Check bypass list and validate attestation
+        run: |
+          python3 - <<'PY'
+          import os, re, sys
+
+          author = os.environ.get("PR_AUTHOR", "")
+          body = os.environ.get("PR_BODY") or ""
+
+          # ── Check bypass list ────────────────────────────────────────────
+          bypass_users = set()
+          try:
+              with open("bypass-users.txt") as f:
+                  for line in f:
+                      line = line.strip()
+                      if line and not line.startswith("#"):
+                          bypass_users.add(line.lower())
+          except FileNotFoundError:
+              pass
+
+          if author.lower() in bypass_users:
+              print(f"✅ @{author} is on the bypass list — attestation not required.")
+              sys.exit(0)
+
+          # ── Required fields ──────────────────────────────────────────────
+          required_patterns = {
+              "Description of Work":  r"(?is)##\s*Description of Work\s*\n(?!.*<!--).+\S",
+              "Vendor":               r"(?im)\*\*Vendor\*\*:\s*(?!<!--).+\S",
+              "AI Disclosure":        r"(?im)\*\*Was AI used.*?\*\*:\s*(?!<!--).+\S",
+              "Legal Affirmation":    r"(?is)By submitting this Pull Request.*?(assign|vest).*?BillulloNex",
+              "Contributor Name":     r"(?im)\*\*Contributor Name\*\*:\s*(?!<!--).+\S",
+              "Vendor / Employer":    r"(?im)\*\*Employer / Vendor Entity\*\*:\s*(?!<!--).+\S",
+          }
+
+          missing = []
+          for label, pattern in required_patterns.items():
+              if not re.search(pattern, body):
+                  missing.append(label)
+
+          # ── Unfilled placeholders ────────────────────────────────────────
+          unfilled_fields = []
+          field_checks = {
+              "Description of Work": r"(?is)##\s*Description of Work\s*\n\s*(<!--.*?-->)?\s*$",
+              "Contributor Name":    r"(?im)\*\*Contributor Name:\*\*\s*(<!--.*?-->)?\s*$",
+          }
+          for label, pattern in field_checks.items():
+              if re.search(pattern, body):
+                  unfilled_fields.append(label)
+
+          # ── Report ──────────────────────────────────────────────────────
+          if missing or unfilled_fields:
+              print(f"❌ @{author} — PR is missing required legal attestation.\n")
+              if missing:
+                  print("Missing sections:")
+                  for item in missing:
+                      print(f"  • {item}")
+              if unfilled_fields:
+                  print("\nPlaceholders not filled in:")
+                  for item in unfilled_fields:
+                      print(f"  • {item}")
+              print("\nPlease fill in all required fields in the PR template.")
+              sys.exit(1)
+
+          print(f"✅ @{author} — Legal PR attestation is complete.")
+          PY
