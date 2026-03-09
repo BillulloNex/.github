@@ -3,5 +3,5 @@
 # One username per line. Lines starting with # are comments.
 # To add/remove someone, edit this file and push to main.
 
-ThomasVuNguyen
-brecistoptal
+# ThomasVuNguyen
+# brecistoptal
